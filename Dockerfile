@@ -10,7 +10,7 @@ RUN groupadd appgroup && useradd -G appgroup --no-create-home appuser
 USER appuser
 
 WORKDIR /app
-COPY app.py .
+COPY --chown=appuser:appgroup app.py .
 
 EXPOSE 8000
 
