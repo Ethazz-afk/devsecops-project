@@ -2,7 +2,7 @@ FROM ubuntu:22:04
 
 #installation des paquets pythons et update
 RUN apt-get update && apt-get install -y python3 python3-pip
-RUN apt-get install python3-flask -y
+#RUN apt-get install python3-flask -y
 
 # ajout d'un utilisateur nonr-root 
 RUN groupadd appgroup && useradd -G appgroup --no-create-home appuser
