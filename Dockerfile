@@ -1,11 +1,14 @@
-FROM ubuntu:22:04
+FROM ubuntu:jammy
 
 #installation des paquets pythons et update
-RUN apt-get update && apt-get install -y python3 python3-pip && sudo apt clean 
+RUN apt-get update \
+	&& apt-get install -y python3 python3-pip \
+	&& apt-get clean \
+	&& groupadd appgroup \
+	&& useradd -G appgroup --no-create-home appuser
 #RUN apt-get install python3-flask -y
 
-# ajout d'un utilisateur nonr-root 
-RUN groupadd appgroup && useradd -G appgroup --no-create-home appuser
+# ajout d'un utilisateur nonr-root
 
 USER appuser
 
