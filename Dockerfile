@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:20.04
 
 #installation des paquets pythons et update
 RUN apt-get update \
@@ -16,8 +16,8 @@ USER appuser
 WORKDIR /app
 COPY --chown=appuser:appgroup app.py .
 
-EXPOSE 8000
+EXPOSE 9999
 
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD curl -f http://localhost:8080/health || exit 1
+# HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD curl -f http://localhost:9999/health || exit 1
 
-CMD ["flask", "--app", "/app/app.py", "run", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["flask", "--app", "/app/app.py", "run", "--host", "0.0.0.0", "--port", "9999"]
