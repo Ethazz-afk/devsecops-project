@@ -6,6 +6,7 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World'
 
+# Health check endpoint
 @app.route('/health', methods=['GET'])
 def health_check():
     return 'Health check passed'
